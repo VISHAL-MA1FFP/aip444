@@ -56,8 +56,8 @@ def print_header():
     print(f"git-cm: Developed by {STUDENT_NAME} - {STUDENT_ID}")
     print(f"Run Date: {now}")
     print("-" * 64)
-
-
+   
+    # ready for creative mode test
 def load_api_key():
     load_dotenv(find_dotenv())
     api_key = os.getenv("OPENROUTER_API_KEY")
