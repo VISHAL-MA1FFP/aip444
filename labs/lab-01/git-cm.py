@@ -21,8 +21,8 @@ STUDENT_ID = "189273238"        # <-- replace this
 # ----------------------------------------------------------------------------
 # MODEL CONFIG — two models from two different providers, both free/cheap
 # ----------------------------------------------------------------------------
-MODEL_A = "google/gemini-2.0-flash-exp:free"     # Google
-MODEL_B = "meta-llama/llama-3.3-70b-instruct:free"  # Meta
+MODEL_A =  "google/gemma-4-31b-it"    # Google
+MODEL_B =   "meta-llama/llama-3.3-70b-instruct" 
 
 DEFAULT_MODEL = MODEL_A
 
@@ -73,8 +73,10 @@ def get_staged_diff():
             ["git", "diff", "--staged"],
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             check=True,
-        )
+            )
         diff = result.stdout.strip()
         if not diff:
             print("❌ No staged changes found")
@@ -102,7 +104,8 @@ def generate_commit_message(client, model, system_prompt, diff, temperature):
         return completion.choices[0].message.content.strip()
     except Exception as e:
         return f"⚠️ Error generating message with {model}: {e}"
-
+    
+     # test change 
 
 def main():
     print_header()
